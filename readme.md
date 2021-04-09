@@ -1,10 +1,12 @@
 
 Cods de ajuda relacionado ao banco de dados:
+este comando possibilita inserir um objeto no banco
 
-    db.customers.insert({ nome: "Wallison", idade: 21 , cargo: "Programador"})     // este comando possibilita inserir um objeto no banco
-
-    db.customers.find().pretty()        // essa linha permite realizar uma consulta no banco, retornando no terminal os objetos de forma identada graças ao '.pretty()
+    db.customers.insert({ nome: "Wallison", idade: 21 , cargo: "Programador"})     
+essa linha permite realizar uma consulta no banco, retornando no terminal os objetos de forma identada graças ao '.pretty()
     ' passado ao final do comando
+
+    db.customers.find().pretty()        
     
     db.customers.find({ cargo: "Programador" })     // consulta avançada como filtro todos os objetos que contem como cargo Programador
 
