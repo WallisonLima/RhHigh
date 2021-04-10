@@ -59,9 +59,9 @@ altera o documento proposto no primeiro objeto, para o segundo objeto, alterando
 
     db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {idade: 28}}) // altera a idade do documento com o id correspondente por 28
 
-maneira correta de alterar um campo no documento ↓
+maneira correta de alterar um campo no documento, altera o objeto com o id correspondete inserindo uma nova linha com null ↓
 
- db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {experiencia: null}}) // altera o objeto com o id correspondete inserindo uma nova linha com null
+ db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {experiencia: null}})  
 
 
     $unset: remove o respectivo campo do documento;
