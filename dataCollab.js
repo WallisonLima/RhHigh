@@ -5,10 +5,10 @@ module.exports.dataCollab = async function dataCollab(){
         let dataCollab = {
             nome: "Pedro",
             cargo: "Tesouro",
-            idade: 5,
-            cidade: "Nazaré Paulista",
-            uf: "SP",
-            telefone: null,
+            idade: null,
+            cidade: null,
+            uf: null,
+            telefone: telefone,
             rg: null,
             cpf: null
         }
