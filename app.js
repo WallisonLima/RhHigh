@@ -16,6 +16,12 @@ app.listen(port, ()=>{
     console.log(`Servidor rodando em localhost:${port}`)
 })
 
+
+
+// const CreatCollab = require('./public/controllers/Collab/CreatCollab').CreatCollab
+// const FindCollab = require('./public/controllers/Collab/FindCollab').FindCollab
+// const UpdateCollab = require('./public/controllers/Collab/UpdateCollab').UpdateCollab
+// const dataCollab = require('./dataCollab.js').dataCollab
     
 
 
