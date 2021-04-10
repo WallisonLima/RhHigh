@@ -226,7 +226,7 @@ module.exports.removeFiles = async function removeFile(caminho){
 
 
 module.exports.sleep = async function sleep(timeMs){
-	return new Promise(resolve => setTimeout(resolve, ms));
+	return new Promise(resolve => setTimeout(resolve, timeMs));
 }
 
 

@@ -1,16 +1,28 @@
 const sleep = require('./componentes').sleep
-const getDB = require('./database').getDB
+const insertDB = require('./database').insertDB
 const findDB = require('./database').findDB
 const updateDB = require('./database').updateDB
+const dataCollab = require('./collaborator.js').dataCollab
 
-async function go(){
-    //let consult = await getDB('High',{nome: "Matheus Moraes", idade: 20, cargo: "Gerente de Campanha"})
-    let consult = await findDB('High', {nome:"Wallison Lima"}) 
-    await sleep(1000)  
-    //let resposta = await updateDB('High', ({_id: ObjectId(consult._id)}, {$set: {nome: "Wallison Lima"}}))
-    
-    console.log(consult)
-   // console.log(reposta)
+async function go() {
+
+    let collab = await dataCollab()
+    let respCreat = await insertDB('High',collab)
+    //console.log(respCreat)
+    let o = await dataCollab(respCreat._id)
+    console.log(o)
+    //let respConsult = await findDB('High', respCreat._id)
+
+    // if(respConsult != 'null'){
+    //     console.log(respConsult)
+    // }
+    //let id = { _id: "6070d4df2e0e2e7dd4901c49" }
+    //let respUpdate = await updateDB('High', {id: respConsult._id}, { $set: { nome: "Wallison Lima" }});
+
+    //console.log(respostaCreat)
+    //console.log(respConsult._id)
+    await sleep(1000)
+   
 }
 
 go()
