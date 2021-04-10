@@ -10,6 +10,10 @@ app.get('/', (req, res)=>{
     res.sendFile('./puclic')
 })
 
+app.get('/controllers/', (req, res)=>{
+    console.log(req)
+})
+
 
 
 app.listen(port, ()=>{
