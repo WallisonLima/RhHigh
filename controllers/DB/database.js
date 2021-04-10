@@ -2,10 +2,7 @@ const MongoClient = require('mongodb').MongoClient
 const url = 'mongodb://127.0.0.1:27017'
 
 
-<<<<<<< HEAD:controllers/DB/database.js
 
-=======
->>>>>>> 1fe8eb74139bd328c9eb06102628cb29591068e1:database.js
 module.exports.insertDB = async function insertDB(dbName, myobj){
     return new Promise(async (resolve, reject)=>{
         let db;  
@@ -47,17 +44,12 @@ module.exports.findDB = async function findDB(dbName, query={}, options={}){
 module.exports.updateDB = async function updateDB(dbName, myquery, newvalues){
     return new Promise(async (resolve, reject)=>{
         let db;  
-        console.log(newvalues)
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
                 throw err
             };
             let dbo = db.db("HighStakes");
-<<<<<<< HEAD:controllers/DB/database.js
             dbo.collection(dbName).updateOne(myquery, newvalues, function(err, res) {
-=======
-            dbo.collection(dbName).updateOne().toArray(function(err, res) {
->>>>>>> 1fe8eb74139bd328c9eb06102628cb29591068e1:database.js
                 if (err) {
                     throw err
                 };
