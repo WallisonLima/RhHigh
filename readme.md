@@ -95,3 +95,11 @@ const CreatCollab = require('./public/controllers/Collab/CreatCollab').CreatColl
 const FindCollab = require('./public/controllers/Collab/FindCollab').FindCollab
 const UpdateCollab = require('./public/controllers/Collab/UpdateCollab').UpdateCollab
 const dataCollab = require('./dataCollab.js').dataCollab
+
+
+
+start no servidor do banco de dados:
+    sudo systemctl status mongod
+    sudo service mongod start
+
+    

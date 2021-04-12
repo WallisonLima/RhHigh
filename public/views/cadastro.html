@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/cadastro.css">
+    <title>Cadastro High</title>
+</head>
+
+<body>
+    <div class="card">
+        <section class="avatar"
+            style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
+        </section>
+        <section class="details">
+            <form method="POST" action="/cadastrarColaborador">
+                <h3>Registrar colaborador</h3>
+                <div class="item">
+                    <div>Nome</div>
+                    <input type="text" name="name" placeholder="Wallison Lima" required>
+                </div>
+                <div class=" item">
+                    <div>Email</div>
+                    <input type="email" name="email" placeholder="nome@gmail.com" required>
+                </div>
+                <div class="item">
+                    <div>Data de nascimento</div>
+                    <input type="date" name="birth" placeholder="dd/mm/aaaa" required>
+                </div>
+                <div class="item">
+                    <div>Escolaridade</div>
+                    <div class="graduation">
+                        <select name="scholarYear" required>
+                            <option value="fundamental" {% if student.scholarYear=="fundamental" %} selected {% endif %}
+                                >Ensino Fundamental</option>
+                            <option value="medio'" {% if student.scholarYear=="medio" %} selected {% endif %}>
+                                Ensino Médio</option>
+                            <option value="tecnico" {% if student.scholarYear=="tecnico" %} selected {% endif %}>
+                                Técnico</option>
+                            <option value="tecnologo" {% if student.scholarYear=="tecnologo" %} selected {% endif %}>
+                                Tecnólogo</option>
+                            <option value="graduacao" {% if student.scholarYear=="graduacao" %} selected {% endif %}>
+                                Graduação</option>
+                            <option value="mestrado" {% if student.scholarYear=="mestrado" %} selected {% endif %}>
+                                Mestrado</option>
+                            <option value="doutorado" {% if student.scholarYear=="doutorado" %} selected {% endif %}>
+                                Doutorado</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </div>
+</body>
+
+</html>
