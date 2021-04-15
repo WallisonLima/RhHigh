@@ -29,7 +29,7 @@ module.exports.findDB = async function findDB(dbName, query={}, options={}){
                 throw err
             };
             let dbo = db.db("HighStakes");
-            dbo.collection(dbName).findOne(query, function(err, res) {
+            dbo.collection(dbName).find(query).toArray(function(err, res) {
                 if (err){
                    throw err
                 };
@@ -40,9 +40,10 @@ module.exports.findDB = async function findDB(dbName, query={}, options={}){
     });
 };
 
-module.exports.updateDB = async function updateDB(dbName, myquery, newvalues){
+module.exports.updateDB = async function updateDB(dbName, myquery={}, newvalues){
     return new Promise(async (resolve, reject)=>{
         let db;  
+        console.log(myquery)
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
                 throw err

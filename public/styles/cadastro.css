@@ -5,19 +5,35 @@
 body{
     position:relative;
 }
-
+input[type=text], input[type=date], input[type=email], input[type=number]{
+    width: 100%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+}
+select{
+    width: 100%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #fff;
+}
 .card{
-    position: absolute;
-    margin: 32px auto;
-    width: 800px;
+    position: relative;
+    margin: 2px auto;
+    width: 1000px;
     min-height: 400px;
     background-color: #f5f5f5f5;
-    box-shadow: 2px 6px 3px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 24px 26px 23px 3px rgba(0, 0, 0, 0.3);
     animation: slideLeft 400ms ease;
     display:grid;
     grid-template-columns: 40% 60%;
-    top:15vh;
-    left:30vw;
+    top:10vh;
 }
 .details{
     padding: 32px;
@@ -54,9 +70,9 @@ body{
 section.details a{
     display: block;
     box-sizing: border-box;
-    background-color: darkgoldenrod;
+    background-color: #555;
     text-decoration: none;
-    color: #555;
+    color: #fff;
     text-align:  center;
     font-weight: bold;
     padding: 8px;
@@ -64,13 +80,23 @@ section.details a{
     border: 2px solid rgba(0, 0, 0, 0);
 }
 
+.button {
+    display: block;
+    box-sizing: border-box;
+    background-color: #555;
+    text-decoration: none;
+    color: #fff;
+    text-align:  center;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
 section.details a:hover{
     transition: border 300ms ease-in, color 300ms ease;
     border: 2px solid var(--link-color);
     color: var(--link-color);
 }
-
-/* Teachers List */
 .table-container{
     display: block;
 }
@@ -81,20 +107,17 @@ section.details a:hover{
 .table-container table thead{
     display: block;
 }
-
 .table-container table thead tr{
     display:grid;
     grid-template-columns: 100px 210px 200px 200px 68px;
     width: 100%;
     
 }
-
 .table-container table thead tr th{
     text-transform: uppercase;
     color: var(--title-color);
     font-size: 18px;
 }
-
 .table-container table tbody tr{
     display: grid;
     grid-template-columns: 100px 210px 200px 200px 68px;
@@ -120,7 +143,6 @@ section.details a:hover{
 .table-container table tbody tr{
     border-bottom: 1px solid #777;
 }
-
 .table-container table tbody tr td a{
     text-decoration: none;
     font-weight: bold;
@@ -130,7 +152,6 @@ section.details a:hover{
     padding: 5px;
     border-radius: 8px;
 }
-
 .table-container table tbody tr td:nth-child(3) span{
     color: black;
     display: inline-block;
@@ -141,13 +162,10 @@ section.details a:hover{
     box-sizing: border-box;
     box-shadow: 1px 2px 4px -1px black;
 }
-
 .table-container table tbody tr td a:hover{
     transition: all 400ms ease-in-out;
     filter: drop-shadow(2px 2px 10px var(--link-color) ) brightness(200%);
 }
-
-
 .table-container #register{
     position: absolute;
     background-color: var(--link-color);

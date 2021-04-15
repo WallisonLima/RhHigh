@@ -13,6 +13,10 @@ body {
     background-attachment: fixed;
 }
 
+a{
+    text-decoration: none;
+}
+
 .container {
     position: relative;
     width: 720px;
@@ -36,11 +40,15 @@ body {
 }
 
 .container .card:nth-child(1) {
-    background: url(https://images.unsplash.com/photo-1511629091441-ee46146481b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80) center center / cover;
+    background: url(https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80) center center / cover;
 }
 
 .container .card:nth-child(2) {
-    background: url(https://images.unsplash.com/photo-1491308056676-205b7c9a7dc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80) center center / cover;
+    background: url(https://images.unsplash.com/photo-1560264418-c4445382edbc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80) center center / cover;
+}
+
+.container .card:nth-child(3) {
+    background: url(https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1267&q=80) center center / cover;
 }
 
 
@@ -62,7 +70,7 @@ body {
 }
 
 .container .card .circle h2 {
-    color: #fff;
+    color: #363636;
     font-size: 32px;
     padding: 30px 0;
 }
@@ -75,8 +83,8 @@ body {
 }
 
 .container .card .content p {
-    color: #000;
-
+    color: #363636;
+    font-weight: bold;
 }
 
 .container .card .content a {
@@ -84,10 +92,11 @@ body {
     display: inline-block;
     padding: 10px 20px;
     background: #000;
-    color: #fff;
+    color: #363636;
     border-radius: 40px;
     text-decoration: none;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 .container .card:nth-child(1) .circle,
@@ -98,4 +107,9 @@ body {
 .container .card:nth-child(2) .circle,
 .container .card:nth-child(2) .content a {
     background: var(--title-color);
+}
+
+.container .card:nth-child(3) .circle,
+.container .card:nth-child(3) .content a {
+    background: var(--t-color);
 }

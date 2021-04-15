@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/cadastro.css">
-    <title>Busca High</title>
+    <title>Atualizar High</title>
 </head>
 
 <body>
@@ -15,10 +15,11 @@
             style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
         </section>
         <section class="details">
-                <h3>Buscar colaborador</h3>
+            <form method="POST" action="/getCollab">
+                <h3>Atualizar colaborador</h3>
                 <div class="item">
                     <div>Nome</div>
-                    <div>{}</div>
+                    <input type="text" name="name" placeholder="Wallison Lima" required>
                 </div>
                 <div class="item">
                     <div>Email</div>
@@ -57,10 +58,9 @@
                         </select>
                     </div>
                 </div>
-                
-                <div class="container"><a type="button" href="/">Voltar</a></div>
-                
-            
+                <button class="button" type="submit">Buscar</button><br><br>
+                <div class="container"><a type="button" href="/" class="button">Voltar</a></div>
+            </form>
         </section>
     </div>
 </body>

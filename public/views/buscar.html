@@ -19,47 +19,26 @@
                 <h3>Buscar colaborador</h3>
                 <div class="item">
                     <div>Nome</div>
-                    <input type="text" name="name" placeholder="Wallison Lima" required>
+                    <input type="text" name="name" placeholder="Wallison Lima" >
                 </div>
                 <div class="item">
                     <div>Email</div>
-                    <input type="email" name="email" placeholder="nome@gmail.com" required>
+                    <input type="email" name="email" placeholder="nome@gmail.com" >
                 </div>
                 <div class="item">
                     <div>Telefone</div>
-                    <input type="number" name="phone" placeholder="(11)91234-5678" required>
+                    <input type="number" name="phone" placeholder="(11)91234-5678" >
                 </div>
                 <div class="item">
                     <div>Cargo</div>
-                    <input type="text" name="occupation" placeholder="programador" required>
+                    <input type="text" name="occupation" placeholder="programador" >
                 </div>
                 <div class="item">
                     <div>Data de nascimento</div>
-                    <input type="date" name="birth" placeholder="dd/mm/aaaa" required>
+                    <input type="date" name="birth" placeholder="dd/mm/aaaa" >
                 </div>
-                <div class="item">
-                    <div>Escolaridade</div>
-                    <div class="graduation">
-                        <select name="scholarYear" >
-                            <option value="fundamental" {% if student.scholarYear=="fundamental" %} selected {% endif %}
-                                >Ensino Fundamental</option>
-                            <option value="medio'" {% if student.scholarYear=="medio" %} selected {% endif %}>
-                                Ensino Médio</option>
-                            <option value="tecnico" {% if student.scholarYear=="tecnico" %} selected {% endif %}>
-                                Técnico</option>
-                            <option value="tecnologo" {% if student.scholarYear=="tecnologo" %} selected {% endif %}>
-                                Tecnólogo</option>
-                            <option value="graduacao" {% if student.scholarYear=="graduacao" %} selected {% endif %}>
-                                Graduação</option>
-                            <option value="mestrado" {% if student.scholarYear=="mestrado" %} selected {% endif %}>
-                                Mestrado</option>
-                            <option value="doutorado" {% if student.scholarYear=="doutorado" %} selected {% endif %}>
-                                Doutorado</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit">Buscar</button><br><br>
-                <div class="container"><a type="button" href="/">Voltar</a></div>
+                <button class="button" type="submit">Buscar</button><br><br>
+                <div class="container"><a type="button" href="/" class="button">Voltar</a></div>
                 
             </form>
         </section>
