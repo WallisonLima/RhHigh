@@ -1,32 +1,56 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const routes = express.Router();
+const CreatCollab = require('./controllers/Collab/CreatCollab').CreatCollab
+const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
 
 
-routes.get('/', (req, res)=>{
+routes.use(bodyParser.urlencoded({ extended: false }))
+routes.use(bodyParser.json())
+let urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
+routes.get('/', (req, res) => {
     return res.sendFile(__dirname + '/public/views/home.html')
 })
 
-routes.get('/cadastrar', (req, res)=>{
+routes.get('/cadastrar', (req, res) => {
     return res.sendFile(__dirname + '/public/views/cadastro.html')
 })
 
-routes.post('/cadastrarColaborador', (req, res)=>{
-    return res.send('Retorno com sucesso ou falha no Cadastro')
+routes.post('/cadastrarColaborador', urlencodedParser, function (req, res) {
+    let data =
+    {
+        name: req.body.name,
+        email: req.body.email,
+        birth: req.body.birth,
+        scholarYear: req.body.scholarYear
+    }
+    CreatCollab('High', data)
+    res.redirect('/cadastrar')
 })
 
-routes.get('/buscar', (req, res)=>{
+
+routes.get('/buscar', (req, res) => {
     return res.sendFile(__dirname + '/public/views/buscar.html')
 })
 
-routes.post('/buscarColaborador', (req, res)=>{
-    return res.send('Retorno de sucesso ou falha na Busca')
+routes.post('/buscarColaborador', (req, res) => {
+    let data = {
+        name: req.body.name,
+        email: req.body.email,
+        birth: req.body.birth,
+        scholarYear: req.body.scholarYear
+    }
+    let respFind = FindCollab('High', data)
+    res.send(respFind)
 })
 
-routes.get('/atualizar', (req, res)=>{
+routes.get('/atualizar', (req, res) => {
     return res.send('rota de atualizacao')
 })
 
-routes.post('/atualizarColaborador', (req, res)=>{
+routes.post('/atualizarColaborador', (req, res) => {
     return res.send('Retorno com de sucesso ou falha na Atualização')
 })
 
