@@ -13,7 +13,7 @@ module.exports.insertDB = async function insertDB(dbName, myobj){
                 if (err) {
                     throw err;
                 }
-               // console.log(res.insertedId)
+                //console.log(res.insertedId)
                 resolve(res);
                 db.close();
             });
@@ -23,7 +23,6 @@ module.exports.insertDB = async function insertDB(dbName, myobj){
 
 module.exports.findDB = async function findDB(dbName, query={}, options={}){
     return new Promise(async (resolve, reject)=>{
-        console.log(query)
         let db;  
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
@@ -34,7 +33,6 @@ module.exports.findDB = async function findDB(dbName, query={}, options={}){
                 if (err){
                    throw err
                 };
-                console.log(res)
                 resolve(res);
                 db.close();
             });

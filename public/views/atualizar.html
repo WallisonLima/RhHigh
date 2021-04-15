@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/cadastro.css">
-    <title>Cadastro High</title>
+    <title>Atualizar High</title>
 </head>
 
 <body>
@@ -15,8 +15,8 @@
             style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
         </section>
         <section class="details">
-            <form method="POST" action="/cadastrarColaborador">
-                <h3>Registrar colaborador</h3>
+            <form method="POST" action="/atualizarColaborador">
+                <h3>Atualizar colaborador</h3>
                 <div class="item">
                     <div>Nome</div>
                     <input type="text" name="name" placeholder="Wallison Lima" required>
@@ -40,7 +40,7 @@
                 <div class="item">
                     <div>Escolaridade</div>
                     <div class="graduation">
-                        <select name="scholarYear" required>
+                        <select name="scholarYear" >
                             <option value="fundamental" {% if student.scholarYear=="fundamental" %} selected {% endif %}
                                 >Ensino Fundamental</option>
                             <option value="medio'" {% if student.scholarYear=="medio" %} selected {% endif %}>
@@ -58,7 +58,7 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit">Cadastrar</button><br><br>
+                <button type="submit">Buscar</button><br><br>
                 <div class="container"><a type="button" href="/">Voltar</a></div>
             </form>
         </section>
