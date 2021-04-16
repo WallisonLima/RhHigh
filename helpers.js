@@ -139,7 +139,6 @@ module.exports.mergePDFsComponents = async function mergePDFsComponents(pathName
 
 module.exports.calc = async function calc(uf, valor){
 	return new Promise(async (resolve, reject) =>{
-		
 		let porcUF = 0;
 		let aliInternaUF = 0;
 		let fcp = 0;
@@ -168,60 +167,45 @@ module.exports.calc = async function calc(uf, valor){
 		else{
 			porcUF = 7;
 		}
-
 		let aliEstadual = 0;
 		let totalNota = 0;
 		let ICMSinterEstadual = 0;
-
-		
 		switch(uf){ 
 			case 'MG':
 			case 'RJ':
 			case 'AL':
 			case 'PI':
-
 				aliEstadual = (valor - porcUF)/100;
-
-
 				totalNota = (valor/aliEstadual);
-
 				dif = (totalNota* (aliInternaUF/100)) - ICMSinterEstadual
-
 				fCp = totalNota * (fcp/100)
-				
 				Difal = dif + fCp
-
 				resolve(Difal)
 				break;
-
 			default:
-
 				aliEstadual = (valor - porcUF)/100;
-
 				totalNota = (valor/aliEstadual);
-				
-
 				ICMSinterEstadual = (totalNota * (porcUF/100))
-
 				Difal = (totalNota* (aliInternaUF/100)) - ICMSinterEstadual
-
 				resolve(Difal)
 				break;
 		}	
-
 	});
 }
 
 module.exports.removeFiles = async function removeFile(caminho){
-    let fileFolder = fs.readdirSync(caminho);
-    for(let each of fileFolder){
-        await fs.unlink(caminho+each, (err =>{
-            if(err){
-                console.log(err)
-            }
-        
-        }))  
-    }
+	return new Promise(async (resolve, reject)=>{
+		let fileFolder = fs.readdirSync(caminho);
+		for(let each of fileFolder){
+			await fs.unlink(caminho+each, (err =>{
+				if(err){
+					console.log(err)
+				}
+			
+			}))  
+		}
+		resolve()
+	})
 }
 
 

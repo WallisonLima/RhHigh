@@ -1,4 +1,9 @@
 
+# Projeto de estudo baseado no cadastro de colaboradores ao banco de dados da empresa.
+
+## Neste projeto foi implementado JavaScript, NodeJS, MongoDB, HTML5 e CSS3.
+
+
 Cods de ajuda relacionado ao banco de dados
 
 Este comando possibilita inserir um objeto no banco
