@@ -23,13 +23,14 @@ module.exports.insertDB = async function insertDB(dbName, myobj){
 
 module.exports.findDB = async function findDB(dbName, query={}, options={}){
     return new Promise(async (resolve, reject)=>{
-        let db;  
+        let a = { ...query, phone: '123'} 
+        console.log(a)
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
                 throw err
             };
             let dbo = db.db("HighStakes");
-            dbo.collection(dbName).find(query).toArray(function(err, res) {
+            dbo.collection(dbName).find().toArray(function(err, res) {
                 if (err){
                    throw err
                 };

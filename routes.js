@@ -5,7 +5,7 @@ const CreatCollab = require('./controllers/Collab/CreatCollab').CreatCollab
 const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
-let idCollab = ''
+
 
 routes.use(bodyParser.urlencoded({ extended: false }))
 routes.use(bodyParser.json())
@@ -65,7 +65,6 @@ routes.post('/atualizarColaborador', urlencodedParser, async function (req, res)
 routes.post('/getCollab', urlencodedParser, async function (req, res) {
     
 })
-
 
 
 
