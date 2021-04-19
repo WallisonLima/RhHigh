@@ -3,6 +3,34 @@
 
 ## Neste projeto foi implementado JavaScript, NodeJS, MongoDB, HTML5 e CSS3.
 
+Como requisito neste projeto, deve haver instalado na maquina em questão os seguinte:
+
+* [NodeJS](https://nodejs.org/en/)
+* [Git](https://git-scm.com/downloads)
+* [Mongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+
+e uma IDE, como estou usando o VSCode deixo também um link para download:
+
+* [VsCode](https://code.visualstudio.com/)
+
+Feito e instalação das ferramentas utilizadas nesse projeto, siga os passo abaixo para testar o projeto em questão:
+
+1. Abra um terminal (no Windows procure algo como CMD (conhecido como shell), e no Linux apenas digite CTRL+ALT+t)
+2. Cole o seguinte comando para subir o servidor do banco de dados rodando em sua própria máquina: `sudo systemctl status mongod` para linux, `"C:\Program Files\MongoDB\Server\4.4\bin\mongo.exe"` no windows.
+3. Abra a IDE escolhida, no meu caso o VsCode
+4. Abra um terminal na pasta do projeto, no caso do VsCode localizado na barra de tarefas, descrito como `Terminal`, `new Terminal`
+5. [Clone](https://docs.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository#:~:text=10%2C%20done.-,Clonar%20um%20reposit%C3%B3rio%20no%20GitHub%20Desktop,Desktop%20para%20concluir%20o%20clone.) o projeto em questão.
+6. Após o download instale todas as dependências necessárias com npm: `npm install`
+
+    6.1 Caso de erro em alguma dependência, saiba que as dependências necessárias podem ser baixadas separadamente com `npm install express`,  `npm install body-parser`,  `npm install mongodb`
+8. Feito o download corretamente de tudo, rode no mesmo terminal aberto na pasta do projeto o seguinte comando: `node server.js`
+
+Se tudo correr bem, abra o navegador de preferência e digite na url [localhost:8080](localhost:8080)
+
+Logo verá nossa aplicação rodando com as rotas de cadastro, consulta e update(ainda em desenvolvimento). Caso tenha alguma opinião em relação a melhora do processo ou implementação de algo (que com certeza haverá rsrs), deixe sua sugestão sem medo, será muito bem-vinda. Afinal sou somente um aprendiz e quero progredir com quem sabe. 
+
+#### Obrigado!
+
 
 Cods de ajuda relacionado ao banco de dados
 
@@ -52,11 +80,11 @@ retorna todos os documentos, pulando o primeiro e com limite maximo de dois docu
 
     db.customers.find().skip(1).limit(2)    
 
-retorna todos os documentos que de forma crescente por idade
+retorna todos os documentos de forma crescente por idade
 
     db.customers.find().sort({idade: 1})    
 
-altera o documento proposto no primeiro objeto, para o segundo objeto, alterando completamnete
+altera o documento proposto no primeiro objeto, para o segundo objeto, alterando completamente
 
     db.customers.update({name:"Wallison"}, {nome: "Wallison", idade: 21, cargo: "FullStack"})   
 
@@ -64,9 +92,9 @@ altera o documento proposto no primeiro objeto, para o segundo objeto, alterando
 
     db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {idade: 28}}) // altera a idade do documento com o id correspondente por 28
 
-maneira correta de alterar um campo no documento, altera o objeto com o id correspondete inserindo uma nova linha com null ↓
+maneira correta de alterar um campo no documento, altera o objeto com o id correspondente inserindo uma nova linha com null ↓
 
- db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {experiencia: null}})  
+     db.customers.update({_id: ObjectId("607089ab38f3ef6271167bd5")}, {$set: {experiencia: null}})  
 
 
     $unset: remove o respectivo campo do documento;
@@ -79,32 +107,23 @@ maneira correta de alterar um campo no documento, altera o objeto com o id corre
     db.customers.deleteOne({_id: ObjectId("607089ab38f3ef6271167bd6")}, {$set: {idade: "5.1"})  // exclue todos os documentos que contem o nome Wallison
 
 
-    Primeiro, selecione as linhas que deseja comentar / descomentar ( CTRL+ Lé conveniente selecionar algumas linhas)
+### Anotações importantes para mim
+Primeiro, selecione as linhas que deseja comentar / descomentar ( `CTRL + L` é conveniente selecionar algumas linhas)
 
-    Então:
+Então:
 
-    Para alternar os comentários da linha, execute editor.action.commentLine( CTRL+ /no Windows)
+Para alternar os comentários da linha, execute editor.action.commentLine( `CTRL + /` no Windows)
 
-    ou
+ou
 
-    Para adicionar comentários de linha, execute editor.action.addCommentLine( CTRL+ K CTRL+ C)
+Para adicionar comentários de linha, execute editor.action.addCommentLine( `CTRL + K` , `CTRL + C`)
 
-    Para remover comentários de linha, execute editor.action.removeCommentLine( CTRL+ K CTRL+ U)
+Para remover comentários de linha, execute editor.action.removeCommentLine( `CTRL + K` , `CTRL + U`)
 
-    ou
+ou
 
-    Para alternar um comentário em bloco, execute editor.action.blockComment( SHIFT- ALT- A)
-
-
-const CreatCollab = require('./public/controllers/Collab/CreatCollab').CreatCollab
-const FindCollab = require('./public/controllers/Collab/FindCollab').FindCollab
-const UpdateCollab = require('./public/controllers/Collab/UpdateCollab').UpdateCollab
-const dataCollab = require('./dataCollab.js').dataCollab
+Para alternar um comentário em bloco, execute editor.action.blockComment( `SHIFT - ALT - A`)
 
 
 
-start no servidor do banco de dados:
-    sudo systemctl status mongod
-    sudo service mongod start
 
-    atualização do commit
