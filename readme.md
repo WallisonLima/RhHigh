@@ -3,9 +3,10 @@
 
 ## Neste projeto foi implementado JavaScript, NodeJS, MongoDB, HTML5 e CSS3.
 
+![Interface](./imgHub/Interface.png)
+
 Como requisito neste projeto, deve haver instalado na maquina em questão os seguinte:
 
-* [NodeJS](https://nodejs.org/en/)
 * [NodeJS](https://nodejs.org/en/)
 * [Git](https://git-scm.com/downloads)
 * [Mongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
