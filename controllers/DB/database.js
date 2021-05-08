@@ -24,7 +24,6 @@ module.exports.insertDB = async function insertDB(dbName, myobj){
 module.exports.findDB = async function findDB(dbName, query={}, options={}){
     return new Promise(async (resolve, reject)=>{
         let a = { ...query, phone: '123'} 
-        console.log(a)
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
                 throw err
@@ -41,26 +40,45 @@ module.exports.findDB = async function findDB(dbName, query={}, options={}){
     });
 };
 
-module.exports.updateDB = async function updateDB(dbName, myquery={}, newvalues){
+module.exports.findOneDB = async function findOneDB(dbName, query={}, options={}){
     return new Promise(async (resolve, reject)=>{
-        let db;  
-        console.log(myquery)
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err){
                 throw err
             };
             let dbo = db.db("HighStakes");
-            dbo.collection(dbName).updateOne(myquery, newvalues, function(err, res) {
-                if (err) {
-                    throw err
+            dbo.collection(dbName).findOne(function(err, res) {
+                if (err){
+                   throw err
                 };
-              console.log(res.result.nModified + " document(s) updated");
-              db.close();
+                resolve(res);
+                db.close();
+            });
+        });
+    });
+};
+
+module.exports.updateDB = async function updateDB(dbName, myquery={}, newvalues){
+    return new Promise(async (resolve, reject)=>{
+        let db;  
+        MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
+            if (err){
+                throw err
+            };
+            let dbo = db.db("HighStakes");
+            dbo.collection(dbName).findOneAndUpdate(myquery, newvalues, {upsert: true}, function(err, doc) {
+                if (err) return err;
+                resolve(doc);
+                db.close();
+                return res.send('Succesfully saved.');
             });
           });
         });
     
 };
+
+
+
 // module.export.getDB = async function getDB(dbName, ){
 //     return new Promise(async (resolve, reject)=>{
 //         let db = await connectDB(dbName)

@@ -1,8 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const routes = express.Router();
 const CreatCollab = require('./controllers/Collab/CreatCollab').CreatCollab
 const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
+const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
 
@@ -44,7 +45,6 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     } else {
         res.send('Colaborador nao encontrado')
     }
-
 })
 
 
@@ -54,12 +54,12 @@ routes.get('/atualizar', (req, res) => {
 
 routes.post('/atualizarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
-    let respFind = await FindCollab('High', data)
-    if (respFind[0]._id == undefined) {
-        return res.send('colaborador nao encontrado')
-    } else {
-        return res.sendFile(__dirname + '/public/views/GetAtualizaCollab.html')
+    let respFind = await FindOneCollab('High', data)
+    if (respFind == null) {
+          return res.send('colaborador nao encontrado')
     }
+    await UpdateCollab('High', respFind._id, '{name: "Wallison"}')
+
 })
 
 routes.post('/getCollab', urlencodedParser, async function (req, res) {
