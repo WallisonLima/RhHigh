@@ -15,16 +15,11 @@ routes.use(bodyParser.json())
 
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+
 async function checkLog(req, res, next){
     console.log(req)
     return next()
 }
-
-routes.get('/', checkLog, (req, res) => {
-    return res.sendFile(__dirname + '/public/views/home.html')
-})
-
-
 
 async function checkExists(req, res, next) {
     let respCheck = await checkExistsCollab(req)
@@ -33,6 +28,12 @@ async function checkExists(req, res, next) {
     }
     return next(); 
 }
+
+
+
+routes.get('/', checkLog, (req, res) => {
+    return res.sendFile(__dirname + '/public/views/home.html')
+})
 
 
 
@@ -81,10 +82,6 @@ routes.post('/atualizarColaborador', urlencodedParser, async function (req, res)
     await UpdateCollab('High', respFind._id, '{name: "Wallison"}')
 
 })
-
-
-
-
 
 
 
