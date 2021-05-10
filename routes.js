@@ -6,7 +6,7 @@ const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
 const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
-const buscarColaborador = require('./public/functions/buscarColaborador').buscarColaborador
+const buscarColaborador = require('./public/functions/middlewares/buscarColaborador').buscarColaborador
 const checkData = require('./public/functions/middlewares/checkData').checkData
 
 
