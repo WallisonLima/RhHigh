@@ -6,6 +6,7 @@ const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
 const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
+const buscarColaborador = require('./public/functions/buscarColaborador').buscarColaborador
 
 
 routes.use(bodyParser.urlencoded({ extended: false }))
@@ -40,9 +41,10 @@ routes.get('/buscar', (req, res) => {
 routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let respFind = await FindCollab('High', data)
+    let renderResp = await buscarColaborador(respFind)
     if (respFind !== null) {
-        console.log(respFind)
-        return res.sendFile(__dirname + '/public/views/buscarColaborador.html', respFind)
+        console.log(renderResp)
+        return res.send(renderResp)
     } else {
         res.send('Colaborador nao encontrado')
     }
