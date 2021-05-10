@@ -47,7 +47,7 @@ module.exports.findOneDB = async function findOneDB(dbName, query={}, options={}
                 throw err
             };
             let dbo = db.db("HighStakes");
-            dbo.collection(dbName).findOne(function(err, res) {
+            dbo.collection(dbName).findOne(query, function(err, res) {
                 if (err){
                    throw err
                 };

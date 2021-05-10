@@ -7,7 +7,7 @@ const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
 const buscarColaborador = require('./public/functions/middlewares/buscarColaborador').buscarColaborador
-const checkData = require('./public/functions/middlewares/checkData').checkData
+const checkExistsCollab = require('./public/functions/middlewares/checkExistsCollab').checkExistsCollab
 
 
 routes.use(bodyParser.urlencoded({ extended: false }))
@@ -15,21 +15,23 @@ routes.use(bodyParser.json())
 
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-routes.get('/', (req, res) => {
+async function checkLog(req, res, next){
+    console.log(req)
+    return next()
+}
+
+routes.get('/', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/home.html')
 })
 
 
-async function checkExists(req, res, next) {
-    let respCheck = await checkData(req)
 
-    // console.log(req.body)
-    // if (!req.body.name) {
-    // return res.status(400).json({ error: 'geek name is required' });
-    // // middleware local que irá checar se a propriedade name foi informada corretamente,
-    // // caso negativo, irá retornar um erro 400 – BAD REQUEST
-    // }
-    return next(); // se o nome for informado corretamente, a função next() chama as próximas ações
+async function checkExists(req, res, next) {
+    let respCheck = await checkExistsCollab(req)
+    if(respCheck != null){
+        return res.status(400).json({ error: 'Usuário ja cadastrado' });
+    }
+    return next(); 
 }
 
 
