@@ -41,7 +41,8 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let respFind = await FindCollab('High', data)
     if (respFind !== null) {
-        res.send(respFind)
+        console.log(respFind)
+        return res.sendFile(__dirname + '/public/views/buscarColaborador.html', respFind)
     } else {
         res.send('Colaborador nao encontrado')
     }

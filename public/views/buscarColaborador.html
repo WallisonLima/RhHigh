@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/cadastro.css">
+    <title>Busca High</title>
+</head>
+
+<body onload="buscar()">
+    <div class="card">
+        <section class="avatar"
+            style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
+        </section>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Sobrenome</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(details) { %>
+                    <tr>
+                        <td><%= details.name %></td>
+                        <td><%= details.surname %></td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+            <button>
+                <a href="/">Voltar</a>
+            </button>
+        </table> 
+    </div>
+    <script src="/functions/buscarColaborador.js"></script>
+</body>
+
+</html>
