@@ -20,7 +20,7 @@ routes.get('/', (req, res) => {
 })
 
 
-async function checkGeekExists(req, res, next) {
+async function checkExists(req, res, next) {
     let respCheck = await checkData(req)
 
     // console.log(req.body)
@@ -37,7 +37,7 @@ async function checkGeekExists(req, res, next) {
 routes.get('/cadastrar', (req, res) => {
     return res.sendFile(__dirname + '/public/views/cadastro.html')
 })
-routes.post('/cadastrarColaborador', urlencodedParser, checkGeekExists, async function (req, res) {
+routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async function (req, res) {
     let data = await dataCollab(req)
     let respCreat = await CreatCollab('High', data)
     if (respCreat.insertedCount == 1) {
