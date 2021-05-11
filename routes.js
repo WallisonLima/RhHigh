@@ -8,7 +8,8 @@ const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
 const buscarColaborador = require('./public/functions/middlewares/buscarColaborador').buscarColaborador
 const checkExistsCollab = require('./public/functions/middlewares/checkExistsCollab').checkExistsCollab
-
+const consultLogin = require('./controllers/login/Login').consultLogin
+let i = 0
 
 routes.use(bodyParser.urlencoded({ extended: false }))
 routes.use(bodyParser.json())
@@ -16,10 +17,14 @@ routes.use(bodyParser.json())
 let urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
+
 async function checkLog(req, res, next){
-    console.log(req)
-    return next()
+    if(i == 0){
+        res.redirect("/login")
+    }
+    next()
 }
+
 
 async function checkExists(req, res, next) {
     let respCheck = await checkExistsCollab(req)
@@ -31,17 +36,31 @@ async function checkExists(req, res, next) {
 
 
 
+routes.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/public/views/login.html')
+})
+
+routes.post('/signUp', async function(req, res){
+    let resp = await consultLogin(req)
+    if(resp != null){
+        i = 1
+        res.redirect("/")
+    }else{
+        res.send("Login Invalido")
+    }
+})
+
+
+
 routes.get('/', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/home.html')
 })
 
 
-
-routes.get('/cadastrar', (req, res) => {
+routes.get('/cadastrar', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/cadastro.html')
 })
 routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async function (req, res) {
-    let data = await dataCollab(req)
     let respCreat = await CreatCollab('High', data)
     if (respCreat.insertedCount == 1) {
         res.redirect('/cadastrar')
@@ -51,9 +70,7 @@ routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async functi
 })
 
 
-
-
-routes.get('/buscar', (req, res) => {
+routes.get('/buscar', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/buscar.html')
 })
 routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
@@ -68,9 +85,7 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
 })
 
 
-
-
-routes.get('/atualizar', (req, res) => {
+routes.get('/atualizar', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/atualizar.html')
 })
 routes.post('/atualizarColaborador', urlencodedParser, async function (req, res) {

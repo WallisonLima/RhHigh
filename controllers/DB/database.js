@@ -58,6 +58,28 @@ module.exports.findOneDB = async function findOneDB(dbName, query={}, options={}
     });
 };
 
+
+module.exports.consultDB = async function consultDB(dbName, query={}, options={}){
+    return new Promise(async (resolve, reject)=>{
+    
+        MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
+            if (err){
+                throw err
+            };
+            let dbo = db.db("HighStakes");
+            dbo.collection(dbName).findOne(query, function(err, res) {
+                if (err){
+                   throw err
+                };
+                resolve(res);
+                db.close();
+            });
+        });
+    });
+};
+
+
+
 module.exports.updateDB = async function updateDB(dbName, myquery={}, newvalues){
     return new Promise(async (resolve, reject)=>{
         let db;  

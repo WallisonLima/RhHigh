@@ -1,0 +1,51 @@
+@keyframes slideLeft{
+    from{opacity: 0; transform: translateX(-30px);}
+    to{opacity:1; }
+}
+body{
+    position:relative;
+}
+input[type=text], input[type=date], input[type=email], input[type=number]{
+    width: 100%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+}
+select{
+    width: 100%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 300px auto 100px auto;
+}
+
+.item{
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.button {
+    box-sizing: border-box;
+    background-color: #555;
+    text-decoration: none;
+    color: #fff;
+    text-align:  center;
+    font-weight: bold;
+    padding: 5px 5px 5px 5px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
