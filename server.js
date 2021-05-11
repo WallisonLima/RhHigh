@@ -2,7 +2,7 @@ const express = require("express");
 const server = express();
 const routes = require('./routes')
 
-let port = 8080
+let port = 8001
 
 server.use(express.static("public"));
 server.use(routes)
