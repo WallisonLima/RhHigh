@@ -3,6 +3,7 @@ module.exports.buscarColaborador = async function buscarColaborador(data) {
         let tr = ''
         data.map(element => {
             tr += `<tr> <td>Nome: ${element.name}</td><br>
+                        <td>CPF: ${element.cpf}</td><br>
                         <td>Email: ${element.email}</td><br>
                         <td>Telefone: ${element.phone}</td><br>
                         <td>Cargo: ${element.occupation}</td><br>

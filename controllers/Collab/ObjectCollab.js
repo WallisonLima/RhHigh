@@ -15,6 +15,7 @@ module.exports.dataCollab = async function dataCollab({body}) {
         else {
             data ={
                 name: body.name,
+                cpf: body.cpf,
                 email: body.email,
                 phone: body.phone,
                 occupation: body.occupation,
