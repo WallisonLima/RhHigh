@@ -11,6 +11,7 @@ const checkExistsCollab = require('./public/functions/middlewares/checkExistsCol
 const consultLogin = require('./controllers/login/Login').consultLogin
 let i = 0;
 
+
 routes.use(bodyParser.urlencoded({ extended: false }))
 routes.use(bodyParser.json())
 
@@ -23,7 +24,6 @@ async function checkLog(req, res, next){
     }
     next()
 }
-
 
 async function checkExists(req, res, next) {
     let respCheck = await checkExistsCollab(req)

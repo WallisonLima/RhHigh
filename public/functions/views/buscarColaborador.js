@@ -21,7 +21,7 @@ module.exports.buscarColaborador = async function buscarColaborador(data) {
                 <title>Find Collab High</title>
             </head>
             <body>
-                <tbody><div style="display:flex; flex-direction: column; margin:100px auto 10px auto">${tr}</div></tbody>
+                <tbody><div style="display:flex; flex-direction: column; margin:20px auto 10px auto">${tr}</div></tbody>
             </body>
             </html>`
 
