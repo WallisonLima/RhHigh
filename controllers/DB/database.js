@@ -1,11 +1,10 @@
-const MongoClient = require('mongodb').MongoClient
+const { MongoClient } = require('mongodb')
 const url = 'mongodb://127.0.0.1:27017'
 
 
 
 module.exports.insertDB = async function insertDB(dbName, myobj){
     return new Promise(async (resolve, reject)=>{
-        let db;  
         MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
             if (err) throw err;
             let dbo = db.db("HighStakes");

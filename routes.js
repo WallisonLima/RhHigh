@@ -9,7 +9,7 @@ const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
 const buscarColaborador = require('./public/functions/views/buscarColaborador').buscarColaborador
 const checkExistsCollab = require('./public/functions/middlewares/checkExistsCollab').checkExistsCollab
 const consultLogin = require('./controllers/login/Login').consultLogin
-let i = 0
+let i = 0;
 
 routes.use(bodyParser.urlencoded({ extended: false }))
 routes.use(bodyParser.json())
@@ -30,7 +30,7 @@ async function checkExists(req, res, next) {
     if(respCheck != null){
         return res.status(400).json({ error: 'Usuário ja cadastrado' });
     }
-    return next(); 
+    next(); 
 }
 
 
