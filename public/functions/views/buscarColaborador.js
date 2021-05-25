@@ -1,30 +1,17 @@
 
 module.exports.buscarColaborador = async function buscarColaborador(data) {
     return new Promise(async (resolve, reject) => {
-        let tr = ''
+        let component = ''
         data.map(element => {
-            tr += `<div style="margin-left: 10px"'><tr> <td>Nome: ${element.name}</td><br>
-                        <td>CPF: ${element.cpf}</td><br>
-                        <td>Email: ${element.email}</td><br>
-                        <td>Telefone: ${element.phone}</td><br>
-                        <td>Cargo: ${element.occupation}</td><br>
-                        <td>Nascimento: ${element.birth}</td><br>
-                   </tr><br></div>`
+            component += `<div style="margin-left: 10px"'> 
+                            <div>Nome: ${element.name}</div><br>
+                            <div>CPF: ${element.cpf}</div><br>
+                            <div>Email: ${element.email}</div><br>
+                            <div>Telefone: ${element.phone}</div><br>
+                            <div>Cargo: ${element.occupation}</div><br>
+                            <div>Nascimento: ${element.birth}</div><br>
+                          </div>`
         });
-        let component = `
-            <!DOCTYPE html>
-            <html lang="pt-br">
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Find Collab High</title>
-            </head>
-            <body>
-                <tbody><div style="display:flex; flex-direction: column; margin:20px auto 10px auto">${tr}</div></tbody>
-            </body>
-            </html>`
-
         resolve(component)
 
     })

@@ -75,10 +75,10 @@ routes.get('/buscar', checkLog, (req, res) => {
 })
 routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
-    let respFind = await FindCollab('High', data)
-    let renderResp = await buscarColaborador(respFind)
-    if (respFind !== null) {
-        return res.send(renderResp)
+    let colab = await FindCollab('High', data)
+    console.log(colab[0])
+    if (colab !== null) {
+        return res.render(__dirname + '/public/views/buscarColaborador', {data: colab[0]})
     } else {
         res.send('Colaborador nao encontrado')
     }

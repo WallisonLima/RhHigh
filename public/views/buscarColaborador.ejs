@@ -22,19 +22,18 @@
                 </tr>
             </thead>
             <tbody>
-                <% data.forEach(function(details) { %>
-                    <tr>
-                        <td><%= details.name %></td>
-                        <td><%= details.surname %></td>
-                    </tr>
-                    <% }) %>
-            </tbody>
+            </tbody>   
             <button>
                 <a href="/">Voltar</a>
             </button>
         </table> 
+        <div>
+            <% data %>
+        </div> 
     </div>
-    <script src="/functions/buscarColaborador.js"></script>
+    <script type="text/javascript">
+        console.log('<% data %>')
+    </script>
 </body>
 
 </html>
