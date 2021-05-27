@@ -14,28 +14,30 @@
         <section class="avatar"
             style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
         </section>
-        <table border="1">
-            <thead>
-                <tr>
-                    <td>Nome</td>
-                    <td>Email</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{name}}</td>
-                    <td>{{email}}</td>
-                </tr>
-            </tbody>   
+        <div class="cardButton">
             <button>
                 <a href="/">Voltar</a>
             </button>
-        </table> 
+        </div>
         <div>
-            
-        </div> 
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>CPF</td>
+                        <td>Email</td>
+                        <td>Telefone</td>
+                        <td>Cargo</td>
+                        <td>Data Nascimento</td>
+                        <td>Ensino</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{table}}
+                </tbody>
+            </table>
+        </div>
     </div>
-    
 </body>
 
 </html>

@@ -80,13 +80,23 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let colab = await FindCollab('High', data)
 
-    let name = `<div>${colab[0].name}</div>`
-    let email = `<div>${colab[0].email}</div>`
+    let table = []
+    for(let each of colab){
+        table.push(`<tr>
+                        <td>${each.name}</td>
+                        <td>${each.cpf}</td>
+                        <td>${each.email}</td>
+                        <td>${each.phone}</td>
+                        <td>${each.occupation}</td>
+                        <td>${each.birth}</td>
+                        <td>${each.scholarYear}</td>
+                    </tr>`)
+    }
 
-    let header = await help.getPart(__dirname + '/public/views/buscarColaborador.html', [{ search: '{{name}}', replace: name }, { search: '{{email}}', replace: email }])
+    let content = await help.getPart(__dirname + '/public/views/buscarColaborador.html', [{ search: '{{table}}', replace: table }])
 
     if (colab !== null) {
-        return res.send(header)
+        return res.send(content)
     } else {
         res.send('Colaborador nao encontrado')
     }
