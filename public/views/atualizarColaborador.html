@@ -15,27 +15,35 @@
             style="background:url(https://source.unsplash.com/collection/332741/1600x900) no-repeat center center / cover">
         </section>
         <section class="details">
-            <form method="POST" action="/getCollab">
+            <form method="POST" action="/atualizar/colaborador/atualizado">
                 <h3>Atualizar colaborador</h3>
                 <div class="item">
+                    <div>ID</div>
+                    <input type="text" name="id" placeholder="Wallison Lima" value={{id}} readonly>
+                </div>
+                <div class="item">
                     <div>Nome</div>
-                    <input type="text" name="name" placeholder="Wallison Lima" required>
+                    <input type="text" name="name" placeholder="Wallison Lima" value={{name}} required>
+                </div>
+                <div class="item">
+                    <div>CPF</div>
+                    <input type="number" name="cpf" placeholder="000.000.000-00" value={{cpf}} required>
                 </div>
                 <div class="item">
                     <div>Email</div>
-                    <input type="email" name="email" placeholder="nome@gmail.com" required>
+                    <input type="email" name="email" placeholder="nome@gmail.com" value={{email}} required>
                 </div>
                 <div class="item">
                     <div>Telefone</div>
-                    <input type="number" name="phone" placeholder="(11)91234-5678" required>
+                    <input type="number" name="phone" placeholder="(11)91234-5678" value={{phone}} required>
                 </div>
                 <div class="item">
                     <div>Cargo</div>
-                    <input type="text" name="occupation" placeholder="programador" required>
+                    <input type="text" name="occupation" placeholder="programador" value={{occupation}} required>
                 </div>
                 <div class="item">
                     <div>Data de nascimento</div>
-                    <input type="date" name="birth" placeholder="dd/mm/aaaa" required>
+                    <input type="date" name="birth" placeholder="dd/mm/aaaa" value={{birth}} required>
                 </div>
                 <div class="item">
                     <div>Escolaridade</div>

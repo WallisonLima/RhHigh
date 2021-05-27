@@ -2,6 +2,7 @@
 
 module.exports.dataCollab = async function dataCollab({body}) {
     return new Promise(async (resolve, reject) => {
+        console.log(body)
         let data = {}
         if (body.scholarYear == undefined) {
             data ={

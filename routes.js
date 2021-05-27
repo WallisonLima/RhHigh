@@ -68,7 +68,7 @@ routes.post('/signUp', async function(req, res){
     }
 })
 
-routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async function (req, res) {
+routes.post('/cadastrar/colaborador', urlencodedParser, checkExists, async function (req, res) {
     let data = await dataCollab(req)
     let respCreat = await CreatCollab('High', data)
     if (respCreat.insertedCount == 1) {
@@ -78,7 +78,7 @@ routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async functi
     }
 })
 
-routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
+routes.post('/buscar/colaboradores', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let colab = await FindCollab('High', data)
     let table = await BuscarColaborador(colab)
@@ -90,13 +90,40 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     }
 })
 
-routes.post('/atualizarColaborador', urlencodedParser, async function (req, res) {
+routes.post('/atualizar/colaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let respFind = await FindOneCollab('High', data)
     if (respFind == null) {
-          return res.send('colaborador nao encontrado')
+        return res.send('colaborador nao encontrado')
     }
-    await UpdateCollab('High', respFind._id, '{name: "Wallison"}')
+    let {_id, name, cpf, email, phone, occupation, birth, scholarYear} = respFind;
+    let content = await help.getPart(__dirname + '/public/views/atualizarColaborador.html', [
+        { search: '{{id}}', replace: _id },
+        { search: '{{name}}', replace: name },
+        { search: '{{cpf}}', replace: cpf },
+        { search: '{{email}}', replace: email },
+        { search: '{{phone}}', replace: phone },
+        { search: '{{occupation}}', replace: occupation },
+        { search: '{{birth}}', replace: birth },
+        { search: '{{scholarYear}}', replace: scholarYear },
+    ])
+    res.send(content)
+    //await UpdateCollab('High', respFind._id, '{name: "Wallison"}')
+})
+
+routes.post('/atualizar/colaborador/atualizado', urlencodedParser, async function (req, res) {
+    let data = req.body;
+    let content = {
+        name: data.name,
+        cpf: data.cpf,
+        email: data.email,
+        phone: data.phone,
+        occupation: data.occupation,
+        birth: data.birth,
+        scholarYear: data.scholarYear
+    }
+    await UpdateCollab('High', data.id, content)
+    res.redirect("/");
 })
 
 

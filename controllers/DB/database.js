@@ -87,7 +87,7 @@ module.exports.updateDB = async function updateDB(dbName, myquery={}, newvalues)
                 throw err
             };
             let dbo = db.db("HighStakes");
-            dbo.collection(dbName).findOneAndUpdate(myquery, newvalues, {upsert: true}, function(err, doc) {
+            dbo.collection(dbName).updateOne(myquery, newvalues, {upsert: true}, function(err, doc) {
                 if (err) return err;
                 resolve(doc);
                 db.close();
