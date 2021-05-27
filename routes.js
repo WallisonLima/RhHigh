@@ -6,7 +6,7 @@ const FindCollab = require('./controllers/Collab/FindCollab').FindCollab
 const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
-const buscarColaborador = require('./public/functions/views/buscarColaborador').buscarColaborador
+const BuscarColaborador = require('./public/functions/views/BuscarColaborador').BuscarColaborador
 const help = require('./helpers')
 const checkExistsCollab = require('./public/functions/middlewares/checkExistsCollab').checkExistsCollab
 const consultLogin = require('./controllers/login/Login').consultLogin
@@ -40,6 +40,24 @@ routes.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/views/login.html')
 })
 
+routes.get('/', checkLog, (req, res) => {
+    return res.sendFile(__dirname + '/public/views/home.html')
+})
+
+routes.get('/cadastrar', checkLog, (req, res) => {
+    return res.sendFile(__dirname + '/public/views/cadastro.html')
+})
+
+routes.get('/buscar', checkLog, (req, res) => {
+    return res.sendFile(__dirname + '/public/views/buscar.html')
+})
+
+routes.get('/atualizar', checkLog, (req, res) => {
+    return res.sendFile(__dirname + '/public/views/atualizar.html')
+})
+
+
+
 routes.post('/signUp', async function(req, res){
     let resp = await consultLogin(req)
     if(resp != null){
@@ -50,16 +68,6 @@ routes.post('/signUp', async function(req, res){
     }
 })
 
-
-
-routes.get('/', checkLog, (req, res) => {
-    return res.sendFile(__dirname + '/public/views/home.html')
-})
-
-
-routes.get('/cadastrar', checkLog, (req, res) => {
-    return res.sendFile(__dirname + '/public/views/cadastro.html')
-})
 routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async function (req, res) {
     let data = await dataCollab(req)
     let respCreat = await CreatCollab('High', data)
@@ -70,31 +78,11 @@ routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async functi
     }
 })
 
-
-routes.get('/buscar', checkLog, (req, res) => {
-    return res.sendFile(__dirname + '/public/views/buscar.html')
-})
-
-
 routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let colab = await FindCollab('High', data)
-
-    let table = []
-    for(let each of colab){
-        table.push(`<tr>
-                        <td>${each.name}</td>
-                        <td>${each.cpf}</td>
-                        <td>${each.email}</td>
-                        <td>${each.phone}</td>
-                        <td>${each.occupation}</td>
-                        <td>${each.birth}</td>
-                        <td>${each.scholarYear}</td>
-                    </tr>`)
-    }
-
+    let table = await BuscarColaborador(colab)
     let content = await help.getPart(__dirname + '/public/views/buscarColaborador.html', [{ search: '{{table}}', replace: table }])
-
     if (colab !== null) {
         return res.send(content)
     } else {
@@ -102,10 +90,6 @@ routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     }
 })
 
-
-routes.get('/atualizar', checkLog, (req, res) => {
-    return res.sendFile(__dirname + '/public/views/atualizar.html')
-})
 routes.post('/atualizarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let respFind = await FindOneCollab('High', data)
@@ -113,7 +97,6 @@ routes.post('/atualizarColaborador', urlencodedParser, async function (req, res)
           return res.send('colaborador nao encontrado')
     }
     await UpdateCollab('High', respFind._id, '{name: "Wallison"}')
-
 })
 
 
