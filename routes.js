@@ -7,6 +7,7 @@ const FindOneCollab = require('./controllers/Collab/FindCollab').FindCollabOne
 const dataCollab = require('./controllers/Collab/ObjectCollab').dataCollab;
 const UpdateCollab = require('./controllers/Collab/UpdateCollab').UpdateCollab;
 const buscarColaborador = require('./public/functions/views/buscarColaborador').buscarColaborador
+const help = require('./helpers')
 const checkExistsCollab = require('./public/functions/middlewares/checkExistsCollab').checkExistsCollab
 const consultLogin = require('./controllers/login/Login').consultLogin
 let i = 0;
@@ -73,12 +74,19 @@ routes.post('/cadastrarColaborador', urlencodedParser, checkExists, async functi
 routes.get('/buscar', checkLog, (req, res) => {
     return res.sendFile(__dirname + '/public/views/buscar.html')
 })
+
+
 routes.post('/buscarColaborador', urlencodedParser, async function (req, res) {
     let data = await dataCollab(req)
     let colab = await FindCollab('High', data)
-    console.log(colab[0])
+
+    let name = `<div>${colab[0].name}</div>`
+    let email = `<div>${colab[0].email}</div>`
+
+    let header = await help.getPart(__dirname + '/public/views/buscarColaborador.html', [{ search: '{{name}}', replace: name }, { search: '{{email}}', replace: email }])
+
     if (colab !== null) {
-        return res.render(__dirname + '/public/views/buscarColaborador', {data: colab[0]})
+        return res.send(header)
     } else {
         res.send('Colaborador nao encontrado')
     }

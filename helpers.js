@@ -1,6 +1,6 @@
 // const Excel = require('exceljs');
 // const PDFMerger = require ( 'pdf-merger-js' );
-// const fs = require('fs');
+const fs = require('fs');
 // const { AsyncResource } = require('node:async_hooks');
 
 //.replace(/[^a-zA-Z0-9]/g, ' ') REMOVE CARACTERES ESPECIAS EXCETO ESPAÇO E NUMEROS
@@ -211,6 +211,18 @@ module.exports.removeFiles = async function removeFile(caminho){
 
 module.exports.sleep = async function sleep(timeMs){
 	return new Promise(resolve => setTimeout(resolve, timeMs));
+}
+
+
+module.exports.getPart = function(file, replaces = []) {
+
+	let k = fs.readFileSync(file, 'utf8')
+
+	for (let each of replaces) {
+		k = k.split(each.search).join(each.replace)
+	}
+
+	return k
 }
 
 
